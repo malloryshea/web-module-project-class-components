@@ -1,4 +1,6 @@
 import React from 'react';
+import TodoList from './components/TodoList';
+import TodoForm from'./components/TodoForm';
 
 class App extends React.Component {
   constructor(){
@@ -6,14 +8,14 @@ class App extends React.Component {
     this.state = {
       todos: [
         {
-        task: 'Organize Garage',
-        id: 1528817077286,
-        completed: false
+          task: 'Organize Garage',
+          id: 1528817077286,
+          completed: false
         },
         {
-        task: 'Bake Cookies',
-        id: 1528817084358,
-        completed: false
+          task: 'Bake Cookies',
+          id: 1528817084358,
+          completed: false
         }
       ]
     }
@@ -22,25 +24,13 @@ class App extends React.Component {
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state
   render() {
+    const { todos } = this.state;
+
     return (
       <div>
-        <h2>Todos</h2>
-        <ul>
-          {
-            todos.map(todo=> {
-              return (<li>{todo.task} {todo.completed?<span>- completed</span> : <span></span>} </li>)
-            })
-          }
-          <li>Make coffee</li>
-          <li>Feed the dogs</li>
-          <li>Start the laundry</li>
-        </ul>
-
-        <form>
-          <input/>
-          <button>Add</button>
-        </form>
-        
+        <h1>Todos</h1>
+        <TodoList todos={todos}/>
+        <TodoForm />
         <button>Clear</button>
       </div>
     );
